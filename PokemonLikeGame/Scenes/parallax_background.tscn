@@ -1,14 +1,22 @@
-[gd_scene load_steps=5 format=3 uid="uid://bck1uwlkoj5kv"]
+[gd_scene load_steps=7 format=3 uid="uid://bck1uwlkoj5kv"]
 
 [ext_resource type="Script" path="res://Scripts/parallax_background.gd" id="1_m6wxu"]
 [ext_resource type="Texture2D" uid="uid://bhffyqvj524ys" path="res://Sprites/1.png" id="2_nmxif"]
 [ext_resource type="Texture2D" uid="uid://d1wcq8vh6uwpi" path="res://Sprites/3.png" id="3_6i1vf"]
+[ext_resource type="Texture2D" uid="uid://118u1do1b17p" path="res://Sprites/2.png" id="4_5d0dk"]
+
+[sub_resource type="GDScript" id="GDScript_1uw0t"]
+script/source = "extends ParallaxBackground
+
+func _process(delta):
+	scroll_offset.x += 20 * delta
+"
 
 [sub_resource type="GDScript" id="GDScript_pk4dw"]
 script/source = "extends ParallaxBackground
 
 func _process(delta):
-	scroll_offset.x -= 30 * delta
+	scroll_offset.x -= 10 * delta
 
 "
 
@@ -29,6 +37,24 @@ offset_right = 1278.0
 offset_bottom = 180.0
 grow_horizontal = 2
 texture = ExtResource("2_nmxif")
+expand_mode = 1
+
+[node name="ParallaxBackground2" type="ParallaxBackground" parent="."]
+script = SubResource("GDScript_1uw0t")
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground2"]
+position = Vector2(2, 0)
+motion_mirroring = Vector2(1280, 0)
+
+[node name="TextureRect" type="TextureRect" parent="ParallaxBackground2/ParallaxLayer"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -2.0
+offset_right = 1278.0
+offset_bottom = 180.0
+grow_horizontal = 2
+texture = ExtResource("4_5d0dk")
 expand_mode = 1
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
