@@ -8,3 +8,4 @@ var hp = 100
 var attack = 1
 >>>>>>> geo
 var defence = 20
+var enemy_health = 100
