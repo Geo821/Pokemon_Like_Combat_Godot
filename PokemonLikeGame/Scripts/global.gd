@@ -1,3 +1,4 @@
 extends Node
 
-var hp=10000
+var hp=100
+var atac =1
