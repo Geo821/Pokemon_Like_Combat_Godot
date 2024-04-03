@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://118u1do1b17p"
-path="res://.godot/imported/2.png-d42de7d3ccf4d42a96e0ea9f121edf48.ctex"
+uid="uid://e6l2ktoalgqv"
+path="res://.godot/imported/origbig.png-7fe9a04afdc9b05a73d3a53f31ffb853.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/2.png"
-dest_files=["res://.godot/imported/2.png-d42de7d3ccf4d42a96e0ea9f121edf48.ctex"]
+source_file="res://Sprites/simple_natural_landscape_pixel_art_background/origbig.png"
+dest_files=["res://.godot/imported/origbig.png-7fe9a04afdc9b05a73d3a53f31ffb853.ctex"]
 
 [params]
 

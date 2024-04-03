@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bhffyqvj524ys"
-path="res://.godot/imported/1.png-7a7958060d64b2f4d5a9a71efcd83e83.ctex"
+path="res://.godot/imported/1.png-5b6b7f182a5ce197660e7b15cb73572a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/1.png"
-dest_files=["res://.godot/imported/1.png-7a7958060d64b2f4d5a9a71efcd83e83.ctex"]
+source_file="res://Sprites/pixel_ocean_and_sky_background/1.png"
+dest_files=["res://.godot/imported/1.png-5b6b7f182a5ce197660e7b15cb73572a.ctex"]
 
 [params]
 
