@@ -44,6 +44,14 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "ATTACK"
 
+[node name="heal" type="Button" parent="Panel"]
+layout_mode = 0
+offset_left = 518.0
+offset_top = 54.0
+offset_right = 829.0
+offset_bottom = 137.0
+text = "HEAL"
+
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 0
 offset_left = 157.0
@@ -67,3 +75,4 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [connection signal="pressed" from="Panel/Attack" to="." method="_on_attack_pressed"]
+[connection signal="pressed" from="Panel/heal" to="." method="_on_heal_pressed"]

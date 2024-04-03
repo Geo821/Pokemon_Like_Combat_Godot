@@ -4,7 +4,13 @@ extends Control
 
 func _process(delta):
 	hp_text.text = str(Global.hp)
+	if Global.hp == 0:
+		get_tree().quit()
 
 func _on_attack_pressed():
-	Global.hp -= 1
-	print (Global.hp)
+	Global.hp -= 10
+
+
+func _on_heal_pressed():
+	if Global.hp != Global.hp_max:
+		Global.hp += 10
