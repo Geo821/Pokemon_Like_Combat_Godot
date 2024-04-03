@@ -1,0 +1,327 @@
+[gd_scene load_steps=10 format=3 uid="uid://w23leos3suq7"]
+
+[ext_resource type="Script" path="res://scripts/menu_open.gd" id="1_e70he"]
+[ext_resource type="Texture2D" uid="uid://e6l2ktoalgqv" path="res://Sprites/simple_natural_landscape_pixel_art_background/origbig.png" id="2_jlhe1"]
+[ext_resource type="Shader" path="res://Shader/background.gdshader" id="3_pxx1r"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jh6j6"]
+bg_color = Color(0.282353, 0.282353, 0.282353, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o8odp"]
+bg_color = Color(0.211765, 0.211765, 0.211765, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7s3cn"]
+bg_color = Color(0.298039, 0.298039, 0.298039, 0)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_lfjej"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ub1hq"]
+seamless = true
+noise = SubResource("FastNoiseLite_lfjej")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wokks"]
+shader = ExtResource("3_pxx1r")
+shader_parameter/yoffset = 0.5
+shader_parameter/animation_speed = 0.5
+shader_parameter/flame_color = Color(1, 0.239216, 0.239216, 1)
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_ub1hq")
+
+[node name="MENU_UI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_e70he")
+
+[node name="menu_button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -128.0
+offset_bottom = 32.0
+grow_horizontal = 0
+theme_override_styles/normal = SubResource("StyleBoxFlat_jh6j6")
+theme_override_styles/hover = SubResource("StyleBoxFlat_o8odp")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_jh6j6")
+theme_override_styles/focus = SubResource("StyleBoxFlat_o8odp")
+text = "MENU"
+
+[node name="Menu_Panel" type="Panel" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -208.0
+offset_top = -280.0
+offset_right = 204.0
+offset_bottom = 276.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_7s3cn")
+
+[node name="TextureRect" type="TextureRect" parent="Menu_Panel"]
+texture_filter = 3
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_jlhe1")
+expand_mode = 1
+
+[node name="ColorRect" type="ColorRect" parent="Menu_Panel"]
+visible = false
+material = SubResource("ShaderMaterial_wokks")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Menu_Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -96.5
+offset_top = 36.0
+offset_right = 96.5
+offset_bottom = 124.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 50
+text = "PAUSED"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="resume_button" type="Button" parent="Menu_Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -84.0
+offset_top = -128.0
+offset_right = 84.0
+offset_bottom = -64.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_jh6j6")
+theme_override_styles/hover = SubResource("StyleBoxFlat_o8odp")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_jh6j6")
+theme_override_styles/focus = SubResource("StyleBoxFlat_o8odp")
+text = "
+"
+
+[node name="Label" type="Label" parent="Menu_Panel/resume_button"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 20
+text = "RESUME"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="fullscreen_button" type="Button" parent="Menu_Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -84.0
+offset_top = -6.0
+offset_right = 84.0
+offset_bottom = 58.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_jh6j6")
+theme_override_styles/hover = SubResource("StyleBoxFlat_o8odp")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_jh6j6")
+theme_override_styles/focus = SubResource("StyleBoxFlat_o8odp")
+text = "
+"
+
+[node name="fullscreen_text" type="Label" parent="Menu_Panel/fullscreen_button"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 15
+text = "FULLSCREEN:OFF"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="quit_button" type="Button" parent="Menu_Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -84.0
+offset_top = 114.0
+offset_right = 84.0
+offset_bottom = 178.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_jh6j6")
+theme_override_styles/hover = SubResource("StyleBoxFlat_o8odp")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_jh6j6")
+theme_override_styles/focus = SubResource("StyleBoxFlat_o8odp")
+
+[node name="Label" type="Label" parent="Menu_Panel/quit_button"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 20
+text = "QUIT"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Music_Panel" type="Panel" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -204.0
+offset_right = 200.0
+offset_bottom = 204.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Music_Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -88.0
+offset_right = 88.0
+offset_bottom = 88.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 40
+text = "MUSIC SETTINGS"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="Music_Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -80.0
+offset_top = 16.0
+offset_right = 88.0
+offset_bottom = 78.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Music_Panel/Button"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -67.5
+offset_top = -14.0
+offset_right = 67.5
+offset_bottom = 14.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 20
+text = "VOLUME: 70%"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button2" type="Button" parent="Music_Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -80.0
+offset_top = 112.0
+offset_right = 88.0
+offset_bottom = 174.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Music_Panel/Button2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -67.5
+offset_top = -14.0
+offset_right = 67.5
+offset_bottom = 14.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 20
+text = "BACK"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="music_settings_button2" type="Button" parent="Music_Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -80.0
+offset_top = -80.0
+offset_right = 88.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 20
+
+[node name="mute_text" type="Label" parent="Music_Panel/music_settings_button2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 20
+text = "MUTE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="menu_button" to="." method="_on_menu_pressed"]
+[connection signal="pressed" from="Menu_Panel/resume_button" to="." method="_on_resume_button_pressed"]
+[connection signal="pressed" from="Menu_Panel/fullscreen_button" to="." method="_on_fullscreen_button_pressed"]
+[connection signal="pressed" from="Menu_Panel/quit_button" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="Music_Panel/music_settings_button2" to="." method="_on_music_settings_button_pressed"]
