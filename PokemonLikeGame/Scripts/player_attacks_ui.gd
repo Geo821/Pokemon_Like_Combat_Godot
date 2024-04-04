@@ -2,7 +2,7 @@ extends Control
 
 @onready var hp_text = $hp_text
 @onready var hit = %hit
-
+var names
 @onready var enemy_sprite = $enemy
 
 func _ready():
