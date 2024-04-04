@@ -7,13 +7,11 @@ var names
 
 func _ready():
 	hit.visible = false
-	
-	enemy_sprite.play("enemy"+str(randi()%3+1))
-
 func _process(_delta):
 	if Global.hp <= 0:
-		get_tree().quit()
+		get_tree().change_scene_to_file("res://Scenes/world.tscn")
 	hp_text.text = "HP:"+str(Global.hp)
+	enemy_sprite.play(Global.enemy_fight)
 
 func _on_attack_pressed():
 	var chance = randi() % 100 + 1

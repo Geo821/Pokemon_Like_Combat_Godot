@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://dhtc2qmixdeow"]
+
+[ext_resource type="Texture2D" uid="uid://dpxuu05yori2p" path="res://Sprites/verde2.png" id="1_wj3cr"]
+[ext_resource type="PackedScene" uid="uid://bxan2lq3tcamk" path="res://Scenes/player.tscn" id="2_jhvg1"]
+[ext_resource type="PackedScene" uid="uid://bhxwb1q8e73c0" path="res://Scenes/enemy_in_world.tscn" id="3_pkce1"]
+
+[node name="World" type="Node2D"]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 1280.0
+offset_bottom = 720.0
+texture = ExtResource("1_wj3cr")
+
+[node name="player" parent="." instance=ExtResource("2_jhvg1")]
+position = Vector2(619, 316)
+
+[node name="enemy1" parent="." instance=ExtResource("3_pkce1")]
+position = Vector2(1028, 122)
+
+[node name="enemy2" parent="." instance=ExtResource("3_pkce1")]
+position = Vector2(1030, 330)
+
+[node name="enemy3" parent="." instance=ExtResource("3_pkce1")]
+position = Vector2(1033, 563)
