@@ -77,6 +77,7 @@ offset_right = 640.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_styles/panel = SubResource("StyleBoxFlat_a2hkb")
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma4ru")
 
 [node name="Attack" type="Button" parent="Panel"]
 layout_mode = 1
