@@ -8,7 +8,8 @@ extends Control
 
 func _ready():
 	hit.visible = false
-	enemy_sprite.play("enemy"+str(randi()%2+1))
+	
+	enemy_sprite.play("enemy"+str(randi()%3+1))
 
 func _process(_delta):
 	if Global.hp <= 0:
