@@ -48,15 +48,6 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_013ju")
 
-[node name="TextureRect2" type="TextureRect" parent="."]
-layout_mode = 0
-offset_left = 808.0
-offset_top = 272.0
-offset_right = 1060.0
-offset_bottom = 388.0
-texture = ExtResource("2_wvo0k")
-expand_mode = 1
-
 [node name="enemy" type="AnimatedSprite2D" parent="."]
 texture_filter = 3
 position = Vector2(928, 208)
