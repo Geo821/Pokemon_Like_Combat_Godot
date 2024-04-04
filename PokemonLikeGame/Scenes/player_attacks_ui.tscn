@@ -1,17 +1,18 @@
-[gd_scene load_steps=10 format=3 uid="uid://do7cyavlp0gom"]
+[gd_scene load_steps=11 format=3 uid="uid://do7cyavlp0gom"]
 
 [ext_resource type="Script" path="res://Scripts/player_attacks_ui.gd" id="1_013ju"]
-[ext_resource type="Texture2D" uid="uid://diojau4j2dljm" path="res://Sprites/icon.svg" id="1_l0hqp"]
-[ext_resource type="Texture2D" uid="uid://0kmup0d5b14r" path="res://Sprites/enemy1.png" id="3_0lnxn"]
-[ext_resource type="Texture2D" uid="uid://dxkotc1npaduj" path="res://Sprites/enemy2.png" id="3_bub5y"]
+[ext_resource type="Texture2D" uid="uid://drgig1vb154fg" path="res://Sprites/enemies/shadows.png" id="2_urhwc"]
+[ext_resource type="Texture2D" uid="uid://ci3ceheh22tuk" path="res://Sprites/enemies/enemy1.png" id="3_d3mkn"]
+[ext_resource type="Texture2D" uid="uid://2qs6vwk36nhm" path="res://Sprites/enemies/enemy2.png" id="4_0unoy"]
 [ext_resource type="Texture2D" uid="uid://cpdby0mx0k7cy" path="res://Sprites/metal-plate-background_23-2147490438.png" id="4_46g73"]
 [ext_resource type="Texture2D" uid="uid://b63f3e0k15oxy" path="res://Sprites/enemies/enemy3.png" id="4_mxk00"]
+[ext_resource type="Texture2D" uid="uid://hgseehhguql8" path="res://Sprites/player/player_in_battle.png" id="7_l638a"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_fd611"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_0lnxn")
+"texture": ExtResource("3_d3mkn")
 }],
 "loop": false,
 "name": &"enemy1",
@@ -19,7 +20,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_bub5y")
+"texture": ExtResource("4_0unoy")
 }],
 "loop": false,
 "name": &"enemy2",
@@ -48,12 +49,20 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_013ju")
 
+[node name="Shadow" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 808.0
+offset_top = 283.0
+offset_right = 1060.0
+offset_bottom = 399.0
+texture = ExtResource("2_urhwc")
+
 [node name="enemy" type="AnimatedSprite2D" parent="."]
 texture_filter = 3
-position = Vector2(928, 208)
-scale = Vector2(8, 8)
+position = Vector2(928, 243)
+scale = Vector2(5, 5)
 sprite_frames = SubResource("SpriteFrames_fd611")
-animation = &"enemy3"
+animation = &"enemy1"
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 1
@@ -127,11 +136,10 @@ text = "HEAL"
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 0
-offset_left = 157.0
-offset_top = 214.0
-offset_right = 285.0
-offset_bottom = 342.0
-texture = ExtResource("1_l0hqp")
+offset_top = 120.0
+offset_right = 520.0
+offset_bottom = 432.0
+texture = ExtResource("7_l638a")
 
 [node name="hp_text" type="Label" parent="."]
 layout_mode = 1
