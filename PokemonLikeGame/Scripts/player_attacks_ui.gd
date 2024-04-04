@@ -1,26 +1,40 @@
 extends Control
 
 @onready var hp_text = $hp_text
-@onready var miss = %miss
+@onready var hit = %hit
+
+@onready var enemy_sprite = $enemy
+
+
 func _ready():
-	miss.visible = false
+	hit.visible = false
+	enemy_sprite.play("enemy"+str(randi()%2+1))
 
 func _process(_delta):
-	hp_text.text = str(Global.hp)
-	if Global.hp == 0:
+	if Global.hp <= 0:
 		get_tree().quit()
+	hp_text.text = "HP:"+str(Global.hp)
 
 func _on_attack_pressed():
-	if (randi() % 10 + 1) > 3:
-		Global.hp -= 10
-	else : 
-		miss.position.x = randi_range(700, 900)
-		miss.position.y = randi_range(180, 250)
-		miss.add_theme_color_override("font_color",Color("coral"))
-		miss.visible = true
+	var chance = randi() % 100 + 1
+	if chance <= 30:
+		hit.position.x = randi_range(700, 900)
+		hit.position.y = randi_range(180, 250)
+		hit.text = "MISS"
+		#hit.add_theme_color_override("font_color",Color("coral"))
+		hit.visible = true
 		await get_tree().create_timer(1).timeout
-		miss.visible = false
-	
+		hit.visible = false
+	elif chance > 90:
+		hit.position.x = randi_range(700, 900)
+		hit.position.y = randi_range(180, 250)
+		hit.text = "CRIT"
+		hit.visible = true
+		await get_tree().create_timer(1).timeout
+		hit.visible = false
+		Global.hp -= 30
+	else : 
+		Global.hp -= 10
 
 
 func _on_heal_pressed():
