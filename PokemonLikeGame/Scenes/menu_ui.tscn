@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://w23leos3suq7"]
+[gd_scene load_steps=10 format=3 uid="uid://3pqq0h8jk6ja"]
 
 [ext_resource type="Script" path="res://scripts/menu_open.gd" id="1_e70he"]
 [ext_resource type="Texture2D" uid="uid://e6l2ktoalgqv" path="res://Sprites/simple_natural_landscape_pixel_art_background/origbig.png" id="2_jlhe1"]

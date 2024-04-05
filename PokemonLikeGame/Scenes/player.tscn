@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://bxan2lq3tcamk"]
+[gd_scene load_steps=4 format=3 uid="uid://bg27lndagmqjd"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_v0k4m"]
 [ext_resource type="Texture2D" uid="uid://ci3ceheh22tuk" path="res://Sprites/enemies/enemy1.png" id="2_p3i6s"]
@@ -7,12 +7,14 @@
 size = Vector2(14.5, 39.5)
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
+y_sort_enabled = true
 scale = Vector2(2, 2)
 script = ExtResource("1_v0k4m")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+y_sort_enabled = true
+texture = ExtResource("2_p3i6s")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.25, 1.25)
 shape = SubResource("RectangleShape2D_avw5l")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_p3i6s")

@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://bck1uwlkoj5kv" path="res://Scenes/parallax_background.tscn" id="1_2spnu"]
 [ext_resource type="PackedScene" uid="uid://do7cyavlp0gom" path="res://Scenes/player_attacks_ui.tscn" id="2_y0vh8"]
-[ext_resource type="PackedScene" path="res://Scenes/menu_ui.tscn" id="3_tcaeg"]
+[ext_resource type="PackedScene" uid="uid://3pqq0h8jk6ja" path="res://Scenes/menu_ui.tscn" id="3_tcaeg"]
 
 [node name="BattleScene" type="Node2D"]
 

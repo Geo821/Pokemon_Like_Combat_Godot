@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bhxwb1q8e73c0"]
+[gd_scene load_steps=7 format=3 uid="uid://djmupus0cl0om"]
 
 [ext_resource type="Texture2D" uid="uid://ci3ceheh22tuk" path="res://Sprites/enemies/enemy1.png" id="1_sevxt"]
 [ext_resource type="Texture2D" uid="uid://2qs6vwk36nhm" path="res://Sprites/enemies/enemy2.png" id="2_wfvnn"]
@@ -8,25 +8,53 @@
 script/source = "extends Area2D
 @onready var enemy = $enemy
 @onready var collision_shape_2d = $CollisionShape2D
+@onready var texture_rect_2 = $\"../TextureRect2\"
+@onready var label = %Label
 
+var hp = 100
+var is_dead = false
+var is_inside_enemy_area = false
 func _ready():
+	label.visible = false
 	enemy.play(name)
-	
 func _process(delta):
-	if Global.hp <= 0 and Global.enemy_fight == name:
+	
+	if Global.enemy_health <= 0 and Global.enemy_fight == name:
 		self.visible = false
 		collision_shape_2d.disabled = true
+		Global.can_change_scene = false
+		is_dead = true
+	if Global.can_change_scene:
+		texture_rect_2.visible = false
+		self.visible = false
+		if is_dead:
+			self.visible = false
+	else:
+		texture_rect_2.visible = true
+		self.visible = true
+		if is_dead:
+			self.visible = false
+	if Input.is_action_pressed(\"accept\") and is_inside_enemy_area:
+			Global.can_change_scene = true
 func _on_body_entered(body):
 	if body.name == \"player\":
-		Global.hp = Global.hp_max
-		Global.next_scene = \"battle_scene\"
-		Global.can_change_scene = true
-		Global.enemy_fight = name
 		
+		Global.enemy_health = hp
+		#Global.next_scene = \"battle_scene\"
+		Global.enemy_fight = name
+		if Global.enemy_fight == name:
+			label.visible = true
+		is_inside_enemy_area = true
+		
+
+
+func _on_body_exited(body):
+	label.visible = false
+	is_inside_enemy_area = false
 "
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xik68"]
-radius = 42.0595
+radius = 29.7321
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_4p1ld"]
 animations = [{
@@ -56,12 +84,14 @@ animations = [{
 }]
 
 [node name="enemy1" type="Area2D"]
+y_sort_enabled = true
 script = SubResource("GDScript_xbh4l")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_xik68")
 
 [node name="enemy" type="AnimatedSprite2D" parent="."]
+y_sort_enabled = true
 texture_filter = 3
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_4p1ld")
@@ -69,7 +99,12 @@ animation = &"enemy3"
 frame_progress = 1.0
 
 [node name="Label" type="Label" parent="."]
-offset_right = 40.0
-offset_bottom = 23.0
+unique_name_in_owner = true
+offset_left = -68.0
+offset_top = -73.0
+offset_right = 78.0
+offset_bottom = -50.0
+text = "PRESS (E) TO FIGHT"
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

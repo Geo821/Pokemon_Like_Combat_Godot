@@ -2,17 +2,18 @@ extends Control
 
 @onready var hp_text = $hp_text
 @onready var hit = %hit
-var names
 @onready var enemy_sprite = $enemy
 
 func _ready():
 	hit.visible = false
+	self.visible = false
 func _process(_delta):
-	if Global.hp <= 0:
-		get_tree().change_scene_to_file("res://Scenes/world.tscn")
-	hp_text.text = "HP:"+str(Global.hp)
+	if Global.can_change_scene:
+		self.visible = true
+	else:
+		self.visible = false
+	hp_text.text = "HP:"+str(Global.enemy_health)
 	enemy_sprite.play(Global.enemy_fight)
-
 func _on_attack_pressed():
 	var chance = randi() % 100 + 1
 	if chance <= 30:
@@ -29,9 +30,9 @@ func _on_attack_pressed():
 		hit.visible = true
 		await get_tree().create_timer(1).timeout
 		hit.visible = false
-		Global.hp -= 30
+		Global.enemy_health -= 30
 	else : 
-		Global.hp -= 10
+		Global.enemy_health -= 10
 
 
 func _on_heal_pressed():
