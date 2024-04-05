@@ -15,3 +15,5 @@ func _process(delta):
 		if next_scene == "battle_scene":
 			get_tree().change_scene_to_file("res://Scenes/main.tscn")
 			can_change_scene = false
+	if Input.is_action_just_pressed("esc"):
+		get_tree().quit()
