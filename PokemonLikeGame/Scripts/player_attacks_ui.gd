@@ -3,11 +3,13 @@ extends Control
 @onready var hp_text = $hp_text
 @onready var hit = %hit
 @onready var enemy_sprite = $enemy
-
+@onready var progress_bar = $ProgressBar
 func _ready():
 	hit.visible = false
 	self.visible = false
+	progress_bar.max_value = 100
 func _process(_delta):
+	progress_bar.value = Global.enemy_health
 	if Global.can_change_scene:
 		self.visible = true
 	else:
