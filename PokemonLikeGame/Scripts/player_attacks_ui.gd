@@ -26,13 +26,13 @@ func _on_attack_pressed():
 		await get_tree().create_timer(1).timeout
 		hit.visible = false
 	elif chance > 90:
+		Global.enemy_health -= 30
 		hit.position.x = randi_range(700, 900)
 		hit.position.y = randi_range(180, 250)
 		hit.text = "CRIT"
 		hit.visible = true
 		await get_tree().create_timer(1).timeout
 		hit.visible = false
-		Global.enemy_health -= 30
 	else : 
 		Global.enemy_health -= 10
 
